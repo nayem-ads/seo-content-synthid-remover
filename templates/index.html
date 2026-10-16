@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antigravity // Google SEO & SynthID Purifier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #080b12;
+      --bg-surface: #0f1522;
+      --bg-elevated: #161f33;
+      --bg-glass: rgba(15, 21, 34, 0.82);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(99, 102, 241, 0.55);
+      --text-primary: #f3f6fc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-indigo: #6366f1;
+      --accent-indigo-glow: rgba(99, 102, 241, 0.25);
+      --accent-emerald: #10b981;
+      --accent-emerald-bg: rgba(16, 185, 129, 0.14);
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      background-image:
+        radial-gradient(circle at 12% 0%, rgba(99, 102, 241, 0.12), transparent 40%),
+        radial-gradient(circle at 88% 10%, rgba(16, 185, 129, 0.09), transparent 40%);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 20px 24px 48px;
+    }
+
+    /* Top Header */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-emerald));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      color: #fff;
+      box-shadow: 0 4px 16px var(--accent-indigo-glow);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mode-group {
+      display: flex;
+      background: var(--bg-canvas);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .mode-btn {
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      padding: 7px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      font-family: var(--font-sans);
+    }
+
+    .mode-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .mode-btn.active {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-secondary {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 14px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.22);
+      background: #1e2942;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 18px var(--accent-indigo-glow);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    /* Keyword Vault Bar */
+    .keyword-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .keyword-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .keyword-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .keyword-badge {
+      background: var(--accent-emerald-bg);
+      color: var(--accent-emerald);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+    }
+
+    .keyword-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 12px;
+      min-height: 44px;
+    }
+
+    .keyword-input-row:focus-within {
+      border-color: var(--border-focus);
+    }
+
+    .kw-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.13);
+      border: 1px solid rgba(16, 185, 129, 0.32);
+      color: #6ee7b7;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: var(--font-mono);
+      padding: 4px 10px;
+      border-radius: 7px;
+    }
+
+    .kw-chip button {
+      background: none;
+      border: none;
+      color: #6ee7b7;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .kw-chip button:hover {
+      opacity: 1;
+    }
+
+    .kw-text-input {
+      flex: 1;
+      min-width: 220px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: var(--font-sans);
+      outline: none;
+    }
+
+    /* Scorecard KPI Grid */
+    .scorecard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 1024px) {
+      .scorecard-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .scorecard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kpi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+    }
+
+    .kpi-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .kpi-main {
+      font-size: 28px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      letter-spacing: -0.03em;
+    }
+
+    .kpi-delta {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .delta-good {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+
+    .delta-warn {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .progress-track {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Main Dual Editor Windows */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .workspace-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .editor-pane {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      height: 520px;
+      overflow: hidden;
+    }
+
+    .pane-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.015);
+      gap: 10px;
+    }
+
+    .pane-title {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dot-amber { background: var(--accent-amber); }
+    .dot-emerald { background: var(--accent-emerald); }
+
+    .pane-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .editor-textarea {
+      flex: 1;
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      padding: 16px 18px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.65;
+      resize: none;
+      outline: none;
+    }
+
+    .preview-container {
+      flex: 1;
+      padding: 18px 20px;
+      overflow-y: auto;
+      font-family: var(--font-sans);
+      font-size: 14.5px;
+      line-height: 1.7;
+      display: none;
+    }
+
+    .preview-container h1,
+    .preview-container h2,
+    .preview-container h3 {
+      color: #fff;
+      margin: 14px 0 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .preview-container h1:first-child,
+    .preview-container h2:first-child,
+    .preview-container h3:first-child {
+      margin-top: 0;
+    }
+
+    .preview-container p {
+      margin-bottom: 14px;
+      color: #cbd5e1;
+    }
+
+    .preview-container a {
+      color: #818cf8;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .seo-lock-highlight {
+      background: rgba(16, 185, 129, 0.18);
+      border-bottom: 2px solid #10b981;
+      color: #a7f3d0;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .pane-footer {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(0, 0, 0, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+
+    /* Audit Breakdown Panel */
+    .audit-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .audit-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .audit-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .kw-audit-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .kw-audit-item {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kw-audit-item.pass {
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .threat-pills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .threat-box {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .threat-count {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-emerald);
+      font-size: 14px;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header Bar -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">AG</div>
+        <div>
+          <div class="brand-title">Antigravity SEO &amp; Watermark Purifier</div>
+          <div class="brand-subtitle">Google Helpful Content &bull; SpamBrain Cliché Scrubber &bull; 100% SEO Keyword Lock</div>
+        </div>
+      </div>
+
+      <div class="topbar-controls">
+        <div class="mode-group" role="group" aria-label="Purification Mode">
+          <button type="button" class="mode-btn active" data-mode="deep" onclick="setMode('deep')">
+            Deep Resample (EN&rarr;DE&rarr;EN)
+          </button>
+          <button type="button" class="mode-btn" data-mode="multihop" onclick="setMode('multihop')">
+            Multi-Hop Beast (EN&rarr;ES&rarr;DE&rarr;EN)
+          </button>
+          <button type="button" class="mode-btn" data-mode="fast" onclick="setMode('fast')">
+            Instant Local (&lt;50ms)
+          </button>
+        </div>
+
+        <button type="button" class="btn-secondary" onclick="loadSampleArticle()">
+          Load Sample Claude Article
+        </button>
+
+        <button type="button" id="runBtn" class="btn-primary" onclick="runCleaner()">
+          <span class="spinner" id="btnSpinner"></span>
+          <span id="btnLabel">Purify &amp; Lock SEO</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Protected SEO Keywords Vault -->
+    <section class="keyword-bar">
+      <div class="keyword-header">
+        <div class="keyword-label">
+          <span>Frozen SEO Keywords (Untouched by AI Resampling)</span>
+          <span class="keyword-badge" id="kwCountBadge">3 locked</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn-secondary" onclick="autoDetectKeywords()">
+            Auto-Detect SEO Keywords from Text
+          </button>
+          <button type="button" class="btn-secondary" onclick="clearKeywords()">
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      <div class="keyword-input-row" id="kwContainer" onclick="document.getElementById('kwInput').focus()">
+        <div id="kwChips" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+        <input
+          type="text"
+          id="kwInput"
+          class="kw-text-input"
+          placeholder="Type an exact SEO keyword and press Enter or comma..."
+          onkeydown="handleKwKey(event)"
+        />
+      </div>
+    </section>
+
+    <!-- Live Google Algorithm & SEO Scorecard -->
+    <section class="scorecard-grid">
+      <!-- Card 1: Google Algorithm Safety Score -->
+      <div class="kpi-card">
+        <div class="kpi-title">Google Algorithm Safety Score</div>
+        <div class="kpi-value-row">
+          <span class="kpi-main" id="scoreAfter" style="color: var(--accent-emerald);">--</span>
+          <span class="kpi-delta delta-good" id="scoreDelta">Waiting</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="scoreBar" style="width: 0%; background: linear-gradient(90deg, #6366f1, #10b981);"></div>
+        </div>
+        <div class="kpi-sub">
+          <span>Raw Claude Score: <strong id="scoreBefore">--</strong></span>
+          <span>Target: &ge;85/100</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Token Watermark / 3-Gram Destruction -->
+      <div class="kpi-card">
+        <div class="kpi-title">Token Chain Scramble (SynthID / N-Gram)</div>
+        <div class="kpi-value-row">
+          <span class="kpi-main" id="scramblePct">--%</span>
+          <span class="kpi-delta delta-good" id="scrambleBadge">3-Grams Broken</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="scrambleBar" style="width: 0%; background: var(--accent-indigo);"></div>
+        </div>
+        <div class="kpi-sub">
+          <span>Threshold to break watermark: &gt;45%</span>
+        </div>
+      </div>
+
+      <!-- Card 3: SEO Keyword & Link Integrity -->
+      <div class="kpi-card">
+        <div class="kpi-title">SEO Keyword &amp; Link Preservation</div>
+        <div class="kpi-value-row">
+          <span class="kpi-main" id="seoRetentionPct" style="color: var(--accent-emerald);">100%</span>
+          <span class="kpi-delta delta-good" id="structureBadge">Links &amp; Headers OK</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="seoBar" style="width: 100%; background: var(--accent-emerald);"></div>
+        </div>
+        <div class="kpi-sub">
+          <span id="structureSummary">Headers: 0/0 &bull; Links: 0/0 &bull; Bolds: 0/0</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Burstiness & SpamBrain Footprints -->
+      <div class="kpi-card">
+        <div class="kpi-title">Sentence Burstiness &amp; Clichés Scrubbed</div>
+        <div class="kpi-value-row">
+          <span class="kpi-main" id="threatsTotal">0</span>
+          <span class="kpi-delta delta-warn" id="burstinessBadge">Burstiness: --</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="burstinessBar" style="width: 0%; background: var(--accent-amber);"></div>
+        </div>
+        <div class="kpi-sub">
+          <span>AI Clichés, Em-Dashes &amp; Zero-Width Chars</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual Input / Output Windows -->
+    <section class="workspace-grid">
+      <!-- Left Window: Raw Claude Input -->
+      <div class="editor-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <span class="status-dot dot-amber"></span>
+            <span>INPUT // Raw Claude SEO Article</span>
+          </div>
+          <div class="pane-actions">
+            <button type="button" class="btn-secondary" onclick="clearInput()">Clear</button>
+          </div>
+        </div>
+        <textarea
+          id="inputText"
+          class="editor-textarea"
+          placeholder="Paste your Claude-optimized Markdown or article text here..."
+          oninput="updateInputStats()"
+        ></textarea>
+        <div class="pane-footer">
+          <span id="inputWordCount">0 words &bull; 0 chars</span>
+          <span>Shortcut: Cmd/Ctrl + Enter to Purify</span>
+        </div>
+      </div>
+
+      <!-- Right Window: Purified Output -->
+      <div class="editor-pane">
+        <div class="pane-header">
+          <div class="pane-title">
+            <span class="status-dot dot-emerald"></span>
+            <span>OUTPUT // Google-Safe SEO Article</span>
+          </div>
+          <div class="pane-actions">
+            <button type="button" class="btn-secondary" id="toggleViewBtn" onclick="togglePreview()">
+              View Highlighted Preview
+            </button>
+            <button type="button" class="btn-secondary" id="copyBtn" onclick="copyOutput()">
+              Copy Markdown
+            </button>
+          </div>
+        </div>
+        <textarea
+          id="outputText"
+          class="editor-textarea"
+          placeholder="Your purified, SEO-locked output will appear here..."
+          readonly
+        ></textarea>
+        <div id="outputPreview" class="preview-container"></div>
+        <div class="pane-footer">
+          <span id="outputWordCount">0 words &bull; 0 chars</span>
+          <span id="statusText" style="color: var(--accent-emerald);">Ready</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Detailed Audit Breakdown -->
+    <section class="audit-panel">
+      <div>
+        <div class="audit-section-title">Exact SEO Keyword Density Audit (Before vs. After)</div>
+        <div class="kw-audit-list" id="kwAuditList">
+          <div class="kw-audit-item">Run purifier to inspect per-keyword lock verification.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="audit-section-title">Google SpamBrain &amp; Typographic Footprints Neutralized</div>
+        <div class="threat-pills">
+          <div class="threat-box">
+            <span>Claude Transition Clichés</span>
+            <span class="threat-count" id="tCliches">0</span>
+          </div>
+          <div class="threat-box">
+            <span>Invisible Unicode / NBSP</span>
+            <span class="threat-count" id="tUnicode">0</span>
+          </div>
+          <div class="threat-box">
+            <span>Em-Dash Overuse (&mdash;)</span>
+            <span class="threat-count" id="tDashes">0</span>
+          </div>
+          <div class="threat-box">
+            <span>Curly Quote Clusters</span>
+            <span class="threat-count" id="tQuotes">0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let currentMode = 'deep';
+    let keywords = ['managed cloud hosting', 'enterprise speeds', 'cloud hosting'];
+    let showingPreview = false;
+
+    const SAMPLE_ARTICLE = `## Why Managed Cloud Hosting Matters in 2026
+
+In today’s fast-paced world, businesses must seamlessly scale their web applications — or risk losing customers.\u200b Furthermore, it is worth noting that choosing **managed cloud hosting** is a testament to strong engineering practices.
+
+When you delve into modern infrastructure, [Google Cloud Platform](https://cloud.google.com) and [AWS Enterprise](https://aws.amazon.com) provide crucial **enterprise speeds** that pivotal startups leverage every day. Moreover, a comprehensive guide to cloud hosting will help your team utilize resources efficiently.`;
+
+    function renderChips() {
+      const container = document.getElementById('kwChips');
+      container.innerHTML = '';
+      keywords.forEach((kw, index) => {
+        const chip = document.createElement('span');
+        chip.className = 'kw-chip';
+        chip.innerHTML = `<span>${escapeHtml(kw)}</span><button type="button" onclick="removeKeyword(${index})">&times;</button>`;
+        container.appendChild(chip);
+      });
+      document.getElementById('kwCountBadge').textContent = `${keywords.length} locked`;
+    }
+
+    function addKeyword(raw) {
+      const parts = raw.split(',');
+      parts.forEach(p => {
+        const clean = p.trim();
+        if (clean && !keywords.some(k => k.toLowerCase() === clean.toLowerCase())) {
+          keywords.push(clean);
+        }
+      });
+      renderChips();
+    }
+
+    function removeKeyword(idx) {
+      keywords.splice(idx, 1);
+      renderChips();
+    }
+
+    function clearKeywords() {
+      keywords = [];
+      renderChips();
+    }
+
+    function handleKwKey(e) {
+      if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        const val = e.target.value;
+        if (val.trim()) {
+          addKeyword(val);
+          e.target.value = '';
+        }
+      } else if (e.key === 'Backspace' && !e.target.value && keywords.length > 0) {
+        keywords.pop();
+        renderChips();
+      }
+    }
+
+    function setMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+      });
+    }
+
+    function updateInputStats() {
+      const text = document.getElementById('inputText').value;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      document.getElementById('inputWordCount').textContent = `${words} words • ${text.length} chars`;
+    }
+
+    function updateOutputStats() {
+      const text = document.getElementById('outputText').value;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      document.getElementById('outputWordCount').textContent = `${words} words • ${text.length} chars`;
+    }
+
+    function clearInput() {
+      document.getElementById('inputText').value = '';
+      updateInputStats();
+    }
+
+    function loadSampleArticle() {
+      document.getElementById('inputText').value = SAMPLE_ARTICLE;
+      keywords = ['managed cloud hosting', 'enterprise speeds', 'cloud hosting'];
+      renderChips();
+      updateInputStats();
+    }
+
+    async function autoDetectKeywords() {
+      const text = document.getElementById('inputText').value;
+      if (!text.trim()) return;
+      try {
+        const res = await fetch('/api/auto-keywords', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        const data = await res.json();
+        if (data.keywords && data.keywords.length) {
+          data.keywords.forEach(k => addKeyword(k));
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function runCleaner() {
+      const pendingKw = document.getElementById('kwInput').value.trim();
+      if (pendingKw) {
+        addKeyword(pendingKw);
+        document.getElementById('kwInput').value = '';
+      }
+
+      const text = document.getElementById('inputText').value;
+      if (!text.trim()) return;
+
+      const btn = document.getElementById('runBtn');
+      const spinner = document.getElementById('btnSpinner');
+      const label = document.getElementById('btnLabel');
+      const statusText = document.getElementById('statusText');
+
+      btn.disabled = true;
+      spinner.style.display = 'inline-block';
+      label.textContent = 'Purifying...';
+      statusText.textContent = 'Running translation & SEO lock pass...';
+
+      const t0 = performance.now();
+      try {
+        const response = await fetch('/api/clean', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text,
+            keywords,
+            mode: currentMode
+          })
+        });
+        const data = await response.json();
+        const elapsed = ((performance.now() - t0) / 1000).toFixed(2);
+
+        document.getElementById('outputText').value = data.cleaned_text || '';
+        updateOutputStats();
+        renderMetrics(data.metrics);
+        renderPreviewHtml(data.cleaned_text || '');
+        statusText.textContent = `Completed in ${elapsed}s (${currentMode.toUpperCase()} mode)`;
+      } catch (err) {
+        statusText.textContent = 'Error processing text';
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+        spinner.style.display = 'none';
+        label.textContent = 'Purify & Lock SEO';
+      }
+    }
+
+    function renderMetrics(m) {
+      if (!m) return;
+      document.getElementById('scoreBefore').textContent = `${m.google_safety_score_before}/100`;
+      document.getElementById('scoreAfter').textContent = `${m.google_safety_score_after}/100`;
+      const diff = m.google_safety_score_after - m.google_safety_score_before;
+      document.getElementById('scoreDelta').textContent = `${diff >= 0 ? '+' : ''}${diff} pts`;
+      document.getElementById('scoreBar').style.width = `${m.google_safety_score_after}%`;
+
+      document.getElementById('scramblePct').textContent = `${m.trigram_scramble_pct}%`;
+      document.getElementById('scrambleBar').style.width = `${Math.min(100, m.trigram_scramble_pct)}%`;
+
+      document.getElementById('seoRetentionPct').textContent = `${m.seo_retention_pct}%`;
+      document.getElementById('seoBar').style.width = `${m.seo_retention_pct}%`;
+
+      const st = m.structure;
+      document.getElementById('structureSummary').textContent =
+        `Headers: ${st.headers.after}/${st.headers.before} • Links: ${st.links.after}/${st.links.before} • Bolds: ${st.bolds.after}/${st.bolds.before}`;
+
+      const tr = m.threats_removed;
+      const totalThreats = tr.claude_cliches + tr.invisible_unicode + tr.em_dashes + tr.curly_quotes;
+      document.getElementById('threatsTotal').textContent = `${totalThreats} fixed`;
+      document.getElementById('burstinessBadge').textContent = `Burstiness: ${m.burstiness_after}`;
+      document.getElementById('burstinessBar').style.width = `${Math.min(100, m.burstiness_after)}%`;
+
+      document.getElementById('tCliches').textContent = tr.claude_cliches;
+      document.getElementById('tUnicode').textContent = tr.invisible_unicode;
+      document.getElementById('tDashes').textContent = tr.em_dashes;
+      document.getElementById('tQuotes').textContent = tr.curly_quotes;
+
+      const auditList = document.getElementById('kwAuditList');
+      auditList.innerHTML = '';
+      if (!m.keywords || m.keywords.length === 0) {
+        auditList.innerHTML = '<div class="kw-audit-item">No protected keywords specified.</div>';
+      } else {
+        m.keywords.forEach(item => {
+          const el = document.createElement('div');
+          el.className = `kw-audit-item ${item.intact ? 'pass' : ''}`;
+          const icon = item.intact ? '✓' : '!';
+          const color = item.intact ? '#34d399' : '#fbbf24';
+          el.innerHTML = `
+            <span style="color:${color}; font-weight:700;">${icon}</span>
+            <span>${escapeHtml(item.keyword)}</span>
+            <span style="color:var(--text-secondary);">${item.before} &rarr; ${item.after}</span>
+          `;
+          auditList.appendChild(el);
+        });
+      }
+    }
+
+    function escapeHtml(s) {
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderPreviewHtml(md) {
+      let html = escapeHtml(md);
+      // Headers
+      html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+      html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+      html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+      // Links
+      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      // Bold
+      html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      // Highlight locked SEO keywords
+      const sorted = [...keywords].sort((a, b) => b.length - a.length);
+      sorted.forEach(kw => {
+        if (!kw.trim()) return;
+        const escapedKw = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp(`\\b(${escapedKw})\\b`, 'gi');
+        html = html.replace(re, '<span class="seo-lock-highlight">$1</span>');
+      });
+      // Paragraphs
+      html = html
+        .split(/\n{2,}/)
+        .map(block => {
+          const trimmed = block.trim();
+          if (!trimmed) return '';
+          if (trimmed.startsWith('<h')) return trimmed;
+          return `<p>${trimmed.replace(/\n/g, '<br/>')}</p>`;
+        })
+        .join('');
+      document.getElementById('outputPreview').innerHTML = html;
+    }
+
+    function togglePreview() {
+      showingPreview = !showingPreview;
+      const textarea = document.getElementById('outputText');
+      const preview = document.getElementById('outputPreview');
+      const btn = document.getElementById('toggleViewBtn');
+      if (showingPreview) {
+        renderPreviewHtml(textarea.value);
+        textarea.style.display = 'none';
+        preview.style.display = 'block';
+        btn.textContent = 'View Raw Markdown';
+      } else {
+        textarea.style.display = 'block';
+        preview.style.display = 'none';
+        btn.textContent = 'View Highlighted Preview';
+      }
+    }
+
+    function copyOutput() {
+      const text = document.getElementById('outputText').value;
+      if (!text) return;
+      navigator.clipboard.writeText(text);
+      const btn = document.getElementById('copyBtn');
+      const old = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = old; }, 1600);
+    }
+
+    document.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        runCleaner();
+      }
+    });
+
+    // Initialize with sample article on load
+    loadSampleArticle();
+  </script>
+</body>
+</html>
